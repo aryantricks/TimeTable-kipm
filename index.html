@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIPM CET AI&ML Time Table</title>
+    <link rel="manifest" href="/manifest.json">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100svh - 40px);
+            width: 95%;
+            max-width: 560px;
+            max-height: 1920px;
+        }
+
+        .header {
+            font-size: 20px;
+            text-align: center;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .head {
+            height: 40px;
+            display: flex;
+            justify-content: flex-end;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        .head select {
+            width: 120px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .table {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 5px;
+            gap: 18px;
+        }
+
+        .each {
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            gap: 10px;
+        }
+
+        .each .subject {
+            font-size: 28px;
+        }
+
+        .circle {
+            height: 32px;
+            width: 32px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid #333;
+        }
+
+        .circle.done {
+            background-color: rgb(34, 220, 34);
+            border: none;
+        }
+
+        .circle.current {
+            border: 4px dotted rgb(34, 220, 34);
+            animation: rotate 10s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .progress {
+            display: flex;
+            border: 1px solid #999;
+            width: 95%;
+            height: 25px;
+            border-radius: 15px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .progressfill {
+            display: flex;
+            height: 100%;
+            /* width: 40%; */
+            background-color: rgb(34, 220, 34);
+            border-radius: 15px;
+        }
+
+        .timing {
+            display: flex;
+            font-size: 11px;
+            right: 0;
+        }
+
+        .data {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">KIPM CET AI&ML Time Table</div>
+
+        <div class="head">
+            <select name="Day" id="dayselector">
+                <option value="Today">Today</option>
+                <option value="Tomorrow">Tomorrow</option>
+                <option value="Yesterday">Yesterday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </div>
+
+        <div class="table">
+            <div class="each">
+                <div class="circle  " id="cc1"></div>
+                <div class="data">
+                    <div class="subject" id="class1"></div>
+                    <div class="timing">09:30 AM - 10:20 AM</div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="circle " id="cc2"></div>
+                <div class="data">
+                    <div class="subject" id="class2"></div>
+                    <div class="timing">10:20 AM - 11:10 PM</div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="circle " id="cc3"></div>
+                <div class="data">
+                    <div class="subject" id="class3"></div>
+                    <div class="timing">11:10 AM - 12:00 PM</div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="circle " id="cc4"></div>
+                <div class="data">
+                    <div class="subject" id="class4"></div>
+                    <div class="timing">12:00 PM - 12:50 PM</div>
+                </div>
+            </div>
+            <div class="each break">
+                <div class="data">
+
+                    <div class="progress">
+                        <div class="progressfill"></div>
+                    </div>
+                    <div class="timing" style="margin-left: 40px;gap: 2px;">12:50 PM - 01:50 PM <strong>Break</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="circle" id="cc5"></div>
+                <div class="data">
+                    <div class="subject" id="class5"></div>
+                    <div class="timing">01:50 PM - 03:05 PM</div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="circle" id="cc6"></div>
+                <div class="data">
+                    <div class="subject" id="class6"></div>
+                    <div class="timing">03:05 PM - 04:20 PM</div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <style>
+        .table-cont {
+            display: flex;
+            width: 100%;
+            overflow-x: scroll;
+            padding: 10px;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            text-wrap: nowrap;
+
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fafafa;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: #d3e0ff;
+        }
+    </style>
+
+
+    <!-- Hidden Table for future purpose -->
+    <div id="tbl" class="table-cont" style="display: none;">
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>1st Period</th>
+                    <th>2nd Period</th>
+                    <th>3rd Period</th>
+                    <th>4th Period</th>
+                    <th>5th Period</th>
+                    <th>6th Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>Maths-1</td>
+                    <td>FEE</td>
+                    <td>PPSL-G1/EPL-G2</td>
+                    <td>PPSL-G1/EPL-G2</td>
+                    <td>PPS</td>
+                    <td>Physics</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>Maths-1</td>
+                    <td>FEE</td>
+                    <td>PPSL-G2/EPL-G1</td>
+                    <td>PPSL-G2/EPL-G1</td>
+                    <td>PPS</td>
+                    <td>Physics</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Maths-1</td>
+                    <td>PPS</td>
+                    <td>EGDL-G1/BEE-G2</td>
+                    <td>EGDL-G1/BEE-G2</td>
+                    <td>Physics</td>
+                    <td>FEE</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>Maths-1</td>
+                    <td>FEE</td>
+                    <td>EGDL-G2/BEE-G1</td>
+                    <td>EGDL-G2/BEE-G1</td>
+                    <td>PPS</td>
+                    <td>Physics</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>Maths-1</td>
+                    <td>PPS</td>
+                    <td>Physics</td>
+                    <td>EGDL(T)</td>
+                    <td>FEE</td>
+                    <td>E&E</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>Maths-1</td>
+                    <td>PPS</td>
+                    <td>Physics</td>
+                    <td>Library</td>
+                    <td>FEE</td>
+                    <td>E&E</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+        const timeTable = {
+            0: ["Sunday", "Sunday", "Sunday", "Sunday", "Sunday", "Sunday"],
+            1: ["Maths-1", "FEE", "PPSL-G1/EPL-G2", "PPSL-G1/EPL-G2", "PPS", "Physics"],
+            2: ["Maths-1", "FEE", "PPSL-G2/EPL-G1", "PPSL-G2/EPL-G1", "PPS", "Physics"],
+            3: ["Maths-1", "PPS", "EGDL-G1/BEE-G2", "EGDL-G1/BEE-G2", "Physics", "FEE"],
+            4: ["Maths-1", "FEE", "EGDL-G2/BEE-G1", "EGDL-G2/BEE-G1", "PPS", "Physics"],
+            5: ["Maths-1", "PPS", "Physics", "EGDL(T)", "FEE", "E&E"],
+            6: ["Maths-1", "PPS", "Physics", "Library", "FEE", "E&E"]
+        };
+
+        function updateClasses(day) {
+            const classes = timeTable[day];
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById(`class${i}`).textContent = classes[i - 1];
+            }
+        }
+
+        function getDayNumber(selectedDay) {
+            const currentDay = new Date().getDay();
+            switch (selectedDay) {
+                case "Today": return currentDay;
+                case "Tomorrow": return (currentDay + 1) % 7;
+                case "Yesterday": return (currentDay - 1 + 7) % 7;
+                default: return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].indexOf(selectedDay);
+            }
+        }
+
+        document.getElementById("dayselector").addEventListener("change", (e) => {
+            const selectedDay = e.target.value;
+            const dayNumber = getDayNumber(selectedDay);
+            updateClasses(dayNumber);
+        });
+
+        updateClasses(new Date().getDay());
+
+        function updateClassSchedule() {
+            const schedule = [
+                { id: "cc1", start: "09:30", end: "10:20" },
+                { id: "cc2", start: "10:20", end: "11:10" },
+                { id: "cc3", start: "11:10", end: "12:00" },
+                { id: "cc4", start: "12:00", end: "12:50" },
+                { id: "cc5", start: "13:50", end: "15:05" },
+                { id: "cc6", start: "15:05", end: "16:20" }
+            ];
+
+            const currentTime = new Date();
+            const currentHours = currentTime.getHours();
+            const currentMinutes = currentTime.getMinutes();
+
+            const timeToMinutes = (time) => {
+                const [hours, minutes] = time.split(":").map(Number);
+                return hours * 60 + minutes;
+            };
+
+            const nowInMinutes = currentHours * 60 + currentMinutes;
+
+            schedule.forEach(({ id, start, end }) => {
+                const startTimeInMinutes = timeToMinutes(start);
+                const endTimeInMinutes = timeToMinutes(end);
+                const element = document.getElementById(id);
+
+                if (!element) return;
+
+                if (nowInMinutes >= endTimeInMinutes) {
+                    element.classList.add("done");
+                    element.classList.remove("current");
+                } else if (nowInMinutes >= startTimeInMinutes && nowInMinutes < endTimeInMinutes) {
+                    element.classList.add("current");
+                    element.classList.remove("done");
+                } else {
+                    element.classList.remove("done", "current");
+                }
+            });
+        }
+
+        updateClassSchedule();
+        setInterval(updateClassSchedule, 100);
+
+        const startTime = new Date();
+        startTime.setHours(12, 50, 0, 0);
+        const endTime = new Date();
+        endTime.setHours(13, 50, 0, 0);
+
+        function updateProgress() {
+            const now = new Date();
+            const totalDuration = endTime - startTime;
+            const elapsedTime = now - startTime;
+            const progressPercentage = (elapsedTime / totalDuration) * 100;
+            const progressBar = document.querySelector('.progressfill');
+            progressBar.style.width = Math.min(progressPercentage, 100) + '%';
+        }
+
+        updateProgress();
+        setInterval(updateProgress, 1000);
+
+
+
+    </script>
+
+
+    <style>
+        .footer {
+            width: 100%;
+            background-color: #f8f9fa;
+
+            text-align: center;
+            padding: 10px 20px;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #333;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .footer-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    </style>
+
+    <footer class="footer">
+        Designed and Developed by
+        <a href="https://aryn.in" target="_blank" class="footer-link">Me</a>
+        with 🤍
+    </footer>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+</body>
+
+</html>
