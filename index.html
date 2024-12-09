@@ -32,10 +32,12 @@
         .container {
             display: flex;
             flex-direction: column;
-            height: calc(100svh - 40px);
+            /* height: calc(100svh - 40px); */
             width: 95%;
             max-width: 560px;
-            max-height: 1920px;
+            /* max-height: 1920px; */
+            padding-bottom: 40px;
+
         }
 
         .header {
@@ -226,7 +228,6 @@
             width: 100%;
             overflow-x: scroll;
             padding: 10px;
-
         }
 
         table {
@@ -234,6 +235,7 @@
             border-collapse: collapse;
             margin: 20px 0;
             border-radius: 5px;
+            height: 100%;
         }
 
         th,
@@ -342,12 +344,12 @@
     <script>
         const timeTable = {
             0: ["Sunday", "Sunday", "Sunday", "Sunday", "Sunday", "Sunday"],
-            1: ["Maths-1", "FEE", "PPSL-G1/EPL-G2", "PPSL-G1/EPL-G2", "PPS", "Physics"],
-            2: ["Maths-1", "FEE", "PPSL-G2/EPL-G1", "PPSL-G2/EPL-G1", "PPS", "Physics"],
-            3: ["Maths-1", "PPS", "EGDL-G1/BEE-G2", "EGDL-G1/BEE-G2", "Physics", "FEE"],
-            4: ["Maths-1", "FEE", "EGDL-G2/BEE-G1", "EGDL-G2/BEE-G1", "PPS", "Physics"],
-            5: ["Maths-1", "PPS", "Physics", "EGDL(T)", "FEE", "E&E"],
-            6: ["Maths-1", "PPS", "Physics", "Library", "FEE", "E&E"]
+            1: ["Maths-1", "FEE", "PPS", "Physics", "Revision Class of Physics", "Revision Class of Physics"],
+            2: ["Maths-1", "FEE", "PPS", "Physics", "Revision Class of FEE", "Revision Class of FEE"],
+            3: ["Maths-1", "FEE", "PPS", "Physics", "Revision Class of Maths-1", "Revision Class of Maths-1"],
+            4: ["Maths-1", "FEE", "PPS", "Physics", "Revision Class of PPS", "Revision Class of PPS"],
+            5: ["Maths-1", "FEE", "PPS", "Physics", "EGDL(T)", "E&E"],
+            6: ["Maths-1", "FEE", "PPS", "Physics", "Library", "E&E"]
         };
 
         function updateClasses(day) {
@@ -451,6 +453,8 @@
             font-size: 14px;
             color: #333;
             border-top: 2px solid #e9ecef;
+            position: fixed;
+            bottom: 0;
         }
 
         .footer-link {
@@ -470,7 +474,7 @@
         <a href="https://aryn.in" target="_blank" class="footer-link">Me</a>
         with 🤍
     </footer>
-
+    
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
