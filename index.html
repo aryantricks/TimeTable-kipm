@@ -206,14 +206,21 @@
                 <div class="circle" id="cc5"></div>
                 <div class="data">
                     <div class="subject" id="class5"></div>
-                    <div class="timing">01:50 PM - 03:05 PM</div>
+                    <div class="timing">01:50 PM - 02:40 PM</div>
                 </div>
             </div>
             <div class="each">
                 <div class="circle" id="cc6"></div>
                 <div class="data">
                     <div class="subject" id="class6"></div>
-                    <div class="timing">03:05 PM - 04:20 PM</div>
+                    <div class="timing">02:40 PM - 03:30 PM</div>
+                </div>
+            </div>
+            <div class="each">
+                <div class="circle" id="cc7"></div>
+                <div class="data">
+                    <div class="subject" id="class7"></div>
+                    <div class="timing">03:30 PM - 04:20 PM</div>
                 </div>
             </div>
         </div>
@@ -355,7 +362,7 @@
 
         function updateClasses(day) {
             const classes = timeTable[day];
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= 7; i++) {
                 document.getElementById(`class${i}`).textContent = classes[i - 1];
             }
         }
