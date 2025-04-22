@@ -343,13 +343,16 @@
 
     <script>
         const timeTable = {
-            0: ["Sunday", "Sunday", "Sunday", "Sunday", "Sunday", "Sunday"],
-            1: ["Maths-1", "FEE", "PPS", "Physics", "Revision Class of Physics", "Revision Class of Physics"],
-            2: ["Maths-1", "FEE", "PPS", "Physics", "Revision Class of FEE", "Revision Class of FEE"],
-            3: ["Maths-1", "FEE", "PPS", "Physics", "Revision Class of Maths-1", "Revision Class of Maths-1"],
-            4: ["Maths-1", "FEE", "PPS", "Physics", "Revision Class of PPS", "Revision Class of PPS"],
-            5: ["Maths-1", "FEE", "PPS", "Physics", "EGDL(T)", "E&E"],
-            6: ["Maths-1", "FEE", "PPS", "Physics", "Library", "E&E"]
+            0: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            1: ["Maths-II", "Maths-II", "Maths-II", "Maths-II", "Maths-II", "Maths-II"],
+            2: ["FME", "FME", "FME", "FME", "Chemistry", "Chemistry"],
+            3: ["Chemistry", "Chemistry", "Chemistry", "SS", "FME", "FME"],
+            4: ["FEE", "FEE", "FEE", "FEE", "FEE", "FEE"],
+            5: ["WPL (G01)", "Library G02 / G01", "", "WPL (G02)", "FEE", "SS"],
+            6: ["Library G02 / G01", "ECL (G02 / G01)", "", "SS", "SS", "SS"],
+            7: ["ECL (G01)", "ECL (G01)", "", "Chemistry", "BEEL (G01)", "BEEL (G02)"],
+            8: ["", "", "", "FME", "ELL (G02)", "ELL (G01)"]
+
         };
 
         function updateClasses(day) {
@@ -474,7 +477,7 @@
         <a href="https://aryn.in" target="_blank" class="footer-link">Me</a>
         with 🤍
     </footer>
-    
+
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
