@@ -343,13 +343,13 @@
 
     <script>
         const timeTable = {
-            0: ["Sunday", "Sunday", "Sunday", "Sunday", "Sunday", "Sunday"],  
-1: ["Maths-II", "FME", "Chemistry", "FEE", "WPL (G01)", "ECL (G01)"],  
-2: ["Maths-II", "FME", "Chemistry", "FEE", "Library G02", "ECL (G02)"],  
-3: ["Maths-II", "FME", "Chemistry", "FEE", "WPL (G02)", "SS"],  
-4: ["Maths-II", "FME", "SS", "FEE", "SS", "Chemistry"],  
-5: ["Maths-II", "Chemistry", "FME", "FEE", "FEE", "BEEL (G01)"],  
-6: ["Maths-II", "Chemistry", "FME", "FEE", "SS", "BEEL (G02)"]
+            0: ["Sunday", "Sunday", "Sunday", "Sunday", "Sunday", "Sunday"],
+            1: ["Maths-II", "FME", "Chemistry", "FEE", "WPL (G1)/Libriary (G2)", "WPL (G1)/ECL(G2)", "WPL (G1)/ECL(G2)"],
+            2: ["Maths-II", "FME", "Chemistry", "FEE", "WPL (G2)/Libriary (G1)", "WPL (G2)/ECL(G1)", "WPL (G2)/ECL(G1)"],
+            3: ["Maths-II", "FME", "Chemistry", "FEE", "SS", "Chemistry", "FME"],
+            4: ["Maths-II", "FME", "SS", "FEE", "FEE", "Chemistry", "Maths-II"],
+            5: ["Maths-II", "Chemistry", "FME", "FEE", "SS", "BEEL (G1)/EEL (G2)", "BEEL (G1)/EEL (G2)"],
+            6: ["Maths-II", "Chemistry", "FME", "FEE", "SS", "BEEL (G2)/EEL (G1)", "BEEL (G2)/EEL (G1)"]
 
         };
 
@@ -384,8 +384,9 @@
                 { id: "cc2", start: "10:20", end: "11:10" },
                 { id: "cc3", start: "11:10", end: "12:00" },
                 { id: "cc4", start: "12:00", end: "12:50" },
-                { id: "cc5", start: "13:50", end: "15:05" },
-                { id: "cc6", start: "15:05", end: "16:20" }
+                { id: "cc5", start: "13:50", end: "14:40" },
+                { id: "cc6", start: "14:40", end: "15:30" },
+                { id: "cc7", start: "15:30", end: "16:20" }
             ];
 
             const currentTime = new Date();
